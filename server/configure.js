@@ -1,13 +1,15 @@
 var errorHandler = require('errorhandler'),
 path = require('path'),
+exphbs = require('express3-handlebars');
+express = require('express'),
 bodyParser = require('body-parser'),
 morgan = require('morgan'),
-express = require('express'),
+
 cookieParser = require('cookie-parser'),
 methodOverride = require('method-override'),
 routes = require('./routes'),
 moment = require("moment"),
-exphbs = require('express3-handlebars');
+
 
 module.exports = function(app) {
 
@@ -32,14 +34,16 @@ app.use(bodyParser({
 //app.use(connect.urlencoded());
 app.use(methodOverride());
 app.use(cookieParser('some-secret-value-here'));
-app.use(app.router);
+//app.use(app.router);
+
+routes.initialize(app, new express.Router());
 app.use('/public/', express.static(path.join(__dirname, '../public')));
 
 if('development' === app.get('env')) {
 	app.use(errorHandler());
 }
 	
-routes.initialize(app, new express.Router());
+
 return app;
 
 };
