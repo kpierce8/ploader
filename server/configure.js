@@ -5,7 +5,8 @@ morgan = require('morgan'),
 express = require('express'),
 cookieParser = require('cookie-parser'),
 methodOverride = require('method-override'),
-//routes = require('./routes'),
+routes = require('./routes'),
+moment = require("moment"),
 exphbs = require('express3-handlebars');
 
 module.exports = function(app) {
@@ -13,7 +14,13 @@ module.exports = function(app) {
 app.engine('handlebars',exphbs.create({
 	defaultLayout: 'main',
 	layoutsDir: app.get('views') + '/layouts',
-	partialsDir: [app.get('views') + '/partials']
+	partialsDir: [app.get('views') + '/partials'],
+	helpers: {
+		timeago:function(timestamp){
+		return moment(timestamp).startOf('minute').fromNow();
+			
+		}
+		}
 	}).engine);
 	app.set('view engine', 'handlebars');
 
@@ -32,6 +39,7 @@ if('development' === app.get('env')) {
 	app.use(errorHandler());
 }
 	
+routes.initialize(app);
 return app;
 
 };

@@ -8,5 +8,5 @@ app.set('views', __dirname + '/views');
 app = config(app);
 
 var server = app.listen(app.get('port'), function() {
-	console.log('Serverup: http://localhost:' + app.get('port'));
+	console.log('Server up: http://localhost:' + app.get('port'));
 });

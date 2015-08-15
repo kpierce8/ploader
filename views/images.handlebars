@@ -19,7 +19,9 @@
     </div>
 </div>
 
-<div class="panel panel-default">
+
+
+<div class = "panel panel-default" >
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-8">
@@ -29,9 +31,8 @@
                 <button class="btn btn-default btn-sm" id="btn-comment" data-id="{{ image.uniqueId }}"><i class="fa fa-comments-o"> Post Comment...</i></button>
             </div>
         </div>
-    </div>
-    <div class="panel-body">
-        <blockquote id="post-comment">
+    </div> <div class = "panel-body" >
+    <blockquote id="post-comment">
             <div class="row">
                 
                 <form method="post" action="/images/{{ image.uniqueId }}/comment">
@@ -61,10 +62,9 @@
                 </form>
             </div>
         </blockquote>
-        
-        <ul class="media-list">
-            {{#each comments}}
-            <li class="media">
+
+<ul class = "media-list" > {{#each comments}}
+<li class="media">
                 <a class="pull-left" href="#">
                     <img class="media-object img-circle" src="http://www.gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45">
                 </a>
@@ -72,10 +72,4 @@
                     {{ comment }}
                     <br/><strong class="media-heading">{{ name }}</strong> <small class="text-muted">{{ timeago timestamp }}</small>
                 </div>
-            </li>
-            {{/each}}
-        </ul>
-    </div>
-</div>
-                
-                
+            </li> {{/each}} < /ul> < /div> < /div>
