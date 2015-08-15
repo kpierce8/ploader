@@ -39,7 +39,7 @@ if('development' === app.get('env')) {
 	app.use(errorHandler());
 }
 	
-routes.initialize(app);
+routes.initialize(app, new express.Router());
 return app;
 
 };

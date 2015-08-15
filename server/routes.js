@@ -1,12 +1,12 @@
 var home = require('../controllers/home');
 var image = require('../controllers/image');
 
-module.exports.initialize = function(app) {
+module.exports.initialize = function(app, router) {
   
-  app.get('/',home.index);
-  app.get('/images/:image_id', image.index);
+  router.get('/',home.index);
+  router.get('/images/:image_id', image.index);
   
-  app.post('/images', image.create);
-  app.post('/images/:image_id/like', image.like);
-  app.post('/images/:image_id/comment', image.comment);
+  router.post('/images', image.create);
+  router.post('/images/:image_id/like', image.like);
+  router.post('/images/:image_id/comment', image.comment);
 };
